@@ -8,6 +8,7 @@ The concept behind this project is to leverage Github Workflows for Security rel
 2. Holehe - _look up email usage using holehe by megadose_    
 3. ignorant - _allows you to check if a phone number is used on different sites like snapchat, instagram_
 4. PyWhat - Classify Strings
+5. GetTopWordsFromWebsite - _Get Top Words from website__
 
 
 # Instructions  
