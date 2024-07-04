@@ -5,7 +5,7 @@ on:
     # Inputs the workflow accepts.
     inputs:
       ipaddr:
-        description: 'Domain To Scan'
+        description: 'IP or Domain To Scan'
         default: 'https://example.com'
         required: true
         type: string
@@ -26,5 +26,5 @@ jobs:
       run: docker pull rustscan/rustscan:2.1.1
       
     - name: Docker Run
-      run: docker run --name rustscan rustscan/rustscan:2.1.1 --a ${{ github.event.inputs.ipaddr }}
+      run: docker run --name rustscan rustscan/rustscan:2.1.1 -a ${{ github.event.inputs.ipaddr }}
       
