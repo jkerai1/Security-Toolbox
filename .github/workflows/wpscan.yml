@@ -26,5 +26,5 @@ jobs:
       run: docker pull wpscanteam/wpscan
       
     - name: Docker Run
-      run: docker run -it -rm wpscanteam/wpscan --url $domain
+      run: docker run -it --rm wpscanteam/wpscan --url $domain
       
