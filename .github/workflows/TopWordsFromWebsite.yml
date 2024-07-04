@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       Domain:
-        description: 'Please enter the Domain'
-        default: 'example.com'
+        description: 'Please enter the URL'
+        default: 'https://example.com'
         required: true
         type: string
         
