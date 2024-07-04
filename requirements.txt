@@ -3,3 +3,4 @@ Ignorant
 Dnstwist
 pywhat
 beautifulsoup4
+requests
