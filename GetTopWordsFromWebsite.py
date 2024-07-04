@@ -7,7 +7,7 @@ import argparse
 def main():
   parser = argparse.ArgumentParser(description="Scrape top words from URL")
   parser.add_argument('--domaininput', type=str, default="https://example.com", help='Domain to scrape')
-  parser.add_argument('--NoOfWords', type=str, default="30", help='Amount of Words')
+  parser.add_argument('--NoOfWords', type=int, default="30", help='Amount of Words')
   args = parser.parse_args()
 
   if (str(args.domaininput).startswith('https://')) == False:
