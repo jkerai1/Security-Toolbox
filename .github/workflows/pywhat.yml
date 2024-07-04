@@ -1,0 +1,31 @@
+name: PyWhat
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      string:
+        description: 'String to check with pywhat'
+        default: '0x52908400098527886E0F7030069857D2E4169EE7'
+        required: true
+        type: string
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  PyWhat:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Set up Python environment
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        cache: 'pip' 
+    - run: pip install -r requirements.txt
+      
+    - name: Run Pywhat
+      run: what ${{ github.event.inputs.string }}
