@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from collections import Counter
 import re
+import argparse
 
 def main():
   parser = argparse.ArgumentParser(description="Scrape top words from URL")
