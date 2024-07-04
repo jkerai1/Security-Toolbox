@@ -32,5 +32,5 @@ jobs:
     - run: pip install -r requirements.txt
       
     # Run Ignorant with the provided input
-    - name: Run Ignorant
+    - name: Run DNSTwist
       run: dnstwist ${{ github.event.inputs.domain }}
