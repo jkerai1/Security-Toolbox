@@ -46,10 +46,6 @@ jobs:
     - name: Check inputs
       run: echo "Checking +${{ github.event.inputs.CountryCode }} ${{ github.event.inputs.number }} - Please wait..."
       
-    # Install Ignorant
-    - name: Install Ignorant
-      run: pip install Ignorant
-
     # Run Ignorant with the provided input
     - name: Run Ignorant
       run: ignorant ${{ github.event.inputs.CountryCode }} ${{ github.event.inputs.number }} --only-used
