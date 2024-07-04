@@ -1,4 +1,4 @@
-name: Ignorant Number Check
+name: TopWordsFromWebsite
 
 on:
   workflow_dispatch:
