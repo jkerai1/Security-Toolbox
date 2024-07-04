@@ -40,7 +40,7 @@ jobs:
       with:
         python-version: '3.x'
         cache: 'pip' # caching pip dependencies
-    - run: pip install Ignorant/Requirements.txt
+    - run: pip install /Ignorant/requirements.txt
         
     # Runs a single command using the runners shell
     - name: Check inputs
