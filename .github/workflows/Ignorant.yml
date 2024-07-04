@@ -22,12 +22,10 @@ on:
         default: '644637111'
         # Input has to be provided for the workflow to run
         required: true
-        # The data type of the input
         type: string
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "Ignorant"
   Ignorant:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -39,13 +37,11 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
-        cache: 'pip' # caching pip dependencies
+        cache: 'pip' 
     - run: pip install -r requirements.txt
         
-    # Runs a single command using the runners shell
     - name: Check inputs
       run: echo "Checking +${{ github.event.inputs.CountryCode }} ${{ github.event.inputs.number }} - Please wait..."
       
-    # Run Ignorant with the provided input
     - name: Run Ignorant
       run: ignorant ${{ github.event.inputs.CountryCode }} ${{ github.event.inputs.number }} --only-used
