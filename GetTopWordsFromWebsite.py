@@ -9,7 +9,7 @@ def main():
   parser.add_argument('--domaininput', type=str, default="example.com", help='Domain to scrape')
   parser.add_argument('--NoOfWords', type=str, default="30", help='Amount of Words')
   args = parser.parse_args()
-  most_frequent_words = scrape_and_count_words(domaininput, NoOfWords)
+  most_frequent_words = scrape_and_count_words(args.domaininput, args.NoOfWords)
  
   print("list of top " + str(num_words) + " words from " + str(url))
   print('\n'.join('{}: {}'.format(*k) for k in enumerate(most_frequent_words)))
