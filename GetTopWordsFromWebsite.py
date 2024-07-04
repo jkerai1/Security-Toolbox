@@ -10,7 +10,7 @@ def main():
   parser.add_argument('--NoOfWords', type=str, default="30", help='Amount of Words')
   args = parser.parse_args()
 
-  if (str(args.domaininput).startswith('https://') == False:
+  if (str(args.domaininput).startswith('https://')) == False:
       domain = "https://" + args.domaininput
   else:
       domain = args.domaininput
