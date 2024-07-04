@@ -18,8 +18,8 @@ on:
       number:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'Number to check with Ignorant'
-        # Default value if no value is explicitly provided
-        default: '123456789'
+        # Default value if no value is explicitly provided, exanple from https://github.com/megadose/ignorant?tab=readme-ov-file#-example
+        default: '644637111'
         # Input has to be provided for the workflow to run
         required: true
         # The data type of the input
