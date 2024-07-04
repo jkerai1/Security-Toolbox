@@ -1,0 +1,41 @@
+name: Holehe email lookup
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Email address to check on Holehe'
+        # Default value if no value is explicitly provided
+        default: 'example@gmail.com'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "holehe"
+  holehe:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Set up Python environment
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        cache: 'pip' # caching pip dependencies
+    - run: pip install -r Holehe/requirements.txt
+
+    # Runs a single command using the runners shell
+    - name: Check input
+      run: echo "Checking ${{ github.event.inputs.name }}"
+
+    # Run Holehe with the provided input
+    - name: Run Holehe
+      run: holehe --only-used ${{ github.event.inputs.name }}
