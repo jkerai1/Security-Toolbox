@@ -40,11 +40,11 @@ jobs:
       with:
         python-version: '3.x'
         cache: 'pip' # caching pip dependencies
-    - run: pip install -r Ignorant/requirements.txt
+    - run: pip install -r requirements.txt
         
     # Runs a single command using the runners shell
     - name: Check inputs
-      run: echo "Checking number +${{ github.event.inputs.CountryCode }} ${{ github.event.inputs.number }} - Please wait..."
+      run: echo "Checking +${{ github.event.inputs.CountryCode }} ${{ github.event.inputs.number }} - Please wait..."
       
     # Install Ignorant
     - name: Install Ignorant
