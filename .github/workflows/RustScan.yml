@@ -19,8 +19,8 @@ jobs:
     steps:
     # Set up environment
     - uses: actions/checkout@v4
-    - name: Docker Setup Docker
-      uses: crazy-max/ghaction-setup-docker@v3.3.0
+    #- name: Docker Setup Docker
+    #  uses: crazy-max/ghaction-setup-docker@v3.3.0
 
     - name: Docker Pull
       run: docker pull rustscan/rustscan:2.1.1
