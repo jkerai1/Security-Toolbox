@@ -18,8 +18,8 @@ on:
       number:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'Number to check with Ignorant'
-        # Default value if no value is explicitly provided
-        default: '123456789'
+        # Default value if no value is explicitly provided, exanple from https://github.com/megadose/ignorant?tab=readme-ov-file#-example
+        default: '644637111'
         # Input has to be provided for the workflow to run
         required: true
         # The data type of the input
@@ -40,11 +40,11 @@ jobs:
       with:
         python-version: '3.x'
         cache: 'pip' # caching pip dependencies
-    - run: pip install -r Ignorant/requirements.txt
+    - run: pip install -r requirements.txt
         
     # Runs a single command using the runners shell
     - name: Check inputs
-      run: echo "Checking number +${{ github.event.inputs.CountryCode }} ${{ github.event.inputs.number }} - Please wait..."
+      run: echo "Checking +${{ github.event.inputs.CountryCode }} ${{ github.event.inputs.number }} - Please wait..."
       
     # Install Ignorant
     - name: Install Ignorant
@@ -52,4 +52,4 @@ jobs:
 
     # Run Ignorant with the provided input
     - name: Run Ignorant
-      run: ignorant ${{ github.event.inputs.CountryCode }} ${{ github.event.inputs.number }}
+      run: ignorant ${{ github.event.inputs.CountryCode }} ${{ github.event.inputs.number }} --only-used
