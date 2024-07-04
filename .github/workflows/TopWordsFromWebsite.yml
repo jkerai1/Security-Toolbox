@@ -1,0 +1,33 @@
+name: Ignorant Number Check
+
+on:
+  workflow_dispatch:
+    inputs:
+      Domain:
+        description: 'Please enter the Domain'
+        default: 'example.com'
+        required: true
+        type: string
+        
+      number:
+        description: 'Number of Words to Pull back'
+        default: '30'
+        required: true
+        type: string
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  TopWordsFromWebsite:
+    runs-on: ubuntu-latest
+    steps:
+    # Set up Python environment
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        cache: 'pip' 
+    - run: pip install -r requirements.txt
+        
+    - name: Run Scrapper
+      run: python --domaininput ${{ github.event.inputs.Domain }} --NoOfWords ${{ github.event.inputs.number }
