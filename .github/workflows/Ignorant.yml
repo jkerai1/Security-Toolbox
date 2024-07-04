@@ -1,0 +1,52 @@
+name: Ignorant Number Check
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      CountryCode:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Please enter the numbers country code'
+        # Default value if no value is explicitly provided
+        default: '44'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+        
+      number:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Number to check with Ignorant'
+        # Default value if no value is explicitly provided
+        default: '123456789'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "Ignorant"
+  Ignorant:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Set up Python environment
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        
+    # Runs a single command using the runners shell
+    - name: Check inputs
+      run: echo "Checking number +${{ github.event.inputs.CountryCode }} ${{ github.event.inputs.number }} - Please wait..."
+      
+    # Install Ignorant
+    - name: Install Ignorant
+      run: pip install Ignorant
+
+    # Run Ignorant with the provided input
+    - name: Run Ignorant
+      run: ignorant ${{ github.event.inputs.CountryCode }} ${{ github.event.inputs.number }}
