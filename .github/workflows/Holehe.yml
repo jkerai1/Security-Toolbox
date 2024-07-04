@@ -32,7 +32,7 @@ jobs:
         cache: 'pip' # caching pip dependencies
     - run: pip install -r Holehe/requirements.txt
 
-    # Runs a single command using the runners shell
+    # Echo Input
     - name: Check input
       run: echo "Checking ${{ github.event.inputs.name }}"
 
