@@ -30,4 +30,4 @@ jobs:
     - run: pip install -r requirements.txt
         
     - name: Run Scrapper
-      run: python --domaininput ${{ github.event.inputs.Domain }} --NoOfWords ${{ github.event.inputs.number }}
+      run: python GetTopWordsFromWebsite.py --domaininput ${{ github.event.inputs.Domain }} --NoOfWords ${{ github.event.inputs.number }}
