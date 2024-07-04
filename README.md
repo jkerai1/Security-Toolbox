@@ -2,10 +2,12 @@
 
 The concept behind this project is to leverage Github Workflows for Security related Tasks
 
-# Current Tasks
+# Current Workflows Available  
 
-Holehe - _look up email usage using holehe by megadose_    
-ignorant - _allows you to check if a phone number is used on different sites like snapchat, instagram_
+1. DNSTwist - _Find lookalike domains that adversaries can use to attack you. Can detect typosquatters, phishing attacks, fraud, and brand impersonation _  
+2. Holehe - _look up email usage using holehe by megadose_    
+3. ignorant - _allows you to check if a phone number is used on different sites like snapchat, instagram_  
+
 
 # Instructions  
 
