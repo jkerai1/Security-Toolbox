@@ -24,7 +24,8 @@ jobs:
 
     - name: Docker Pull
       run: docker pull rustscan/rustscan:2.1.1
-      
+
+      #RustScan Documentation recommends 2.1.1 as the latest stable release
     - name: Docker Run
       run: docker run --name rustscan rustscan/rustscan:2.1.1 -a ${{ github.event.inputs.ipaddr }}
       
