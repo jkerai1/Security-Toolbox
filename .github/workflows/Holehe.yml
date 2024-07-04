@@ -30,7 +30,7 @@ jobs:
       with:
         python-version: '3.x'
         cache: 'pip' # caching pip dependencies
-    - run: pip install -r Holehe/requirements.txt
+    - run: pip install -r requirements.txt
 
     # Echo Input
     - name: Check input
