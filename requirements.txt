@@ -2,3 +2,4 @@ holehe
 Ignorant
 Dnstwist
 pywhat
+beautifulsoup
