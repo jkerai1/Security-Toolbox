@@ -13,8 +13,9 @@ jobs:
   MicroBurst:
     runs-on: windows-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    #No need to checkout for this one
+    #- name: Checkout repository
+    # uses: actions/checkout@v2
 
     - name: Git Clone MicroBurst
       run: git clone https://github.com/NetSPI/MicroBurst.git MicroBurst
@@ -23,6 +24,20 @@ jobs:
       shell: pwsh
       run: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 
+    - name: Install Az Modules
+      shell: pwsh
+      working-directory: ./MicroBurst/Misc
+      run: Install-Module Az -Force
+
+    - name: Install AzureAd Modules
+      shell: pwsh
+      run: Install-Module AzureAd -Force
+
+    - name: Install MSOnline Modules
+      shell: pwsh
+      run: Install-Module MSonline -Force
+
+      
     - name: Change Directory to MicroBurst directory
       shell: pwsh
       working-directory: ./MicroBurst
