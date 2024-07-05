@@ -1,8 +1,7 @@
 name: MicroBurst
-# Controls when the action will run. Workflow runs when manually triggered using the UI or API.
+
 on:
   workflow_dispatch:
-    # Inputs the workflow accepts.
     inputs:
       name:
         description: 'Company to check'
@@ -10,27 +9,24 @@ on:
         required: true
         type: string
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   MicroBurst:
-    # The type of runner that the job will run on
     runs-on: windows-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checkout the repository to the runner
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    # Clone the MicroBurst repository
     - name: Git Clone MicroBurst
       run: git clone https://github.com/NetSPI/MicroBurst.git MicroBurst
 
-    # Import the MicroBurst module
+    - name: List Files in MicroBurst
+      shell: pwsh
+      run: Get-ChildItem -Recurse MicroBurst
+
     - name: Import MicroBurst Module
       shell: pwsh
       run: Import-Module ./MicroBurst/MicroBurst.psm1
 
-    # Invoke the enumeration script
     - name: Invoke Enum
       shell: pwsh
       run: ./MicroBurst/Misc/Invoke-EnumerateAzureSubDomains.ps1 -Base ${{ github.event.inputs.name }} -Verbose
