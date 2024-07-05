@@ -19,30 +19,25 @@ jobs:
     - name: Git Clone MicroBurst
       run: git clone https://github.com/NetSPI/MicroBurst.git MicroBurst
 
-    - name: Import MicroBurst Module with Error Handling
+    - name: Set Execution Policy to Bypass
       shell: pwsh
-      run: Set-ExecutionPolicy -ExecutionPolicy Bypass
+      run: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 
-    - name: Change Directory to working directory
+    - name: Change Directory to MicroBurst directory
       shell: pwsh
-      run: cd MicroBurst
-
-    - name: Import MicroBurst Module with Error Handling
-      shell: pwsh
+      working-directory: ./MicroBurst
       run: |
         $ErrorActionPreference = 'Stop'
         try {
-          Import-Module MicroBurst.psm1
+          Import-Module ./MicroBurst.psm1
           Write-Output "Module imported successfully."
         } catch {
           Write-Error "Failed to import module. Error: $_"
           exit 1
         }
 
-    - name: Change Directory to path to run powershell
+    - name: Change Directory to Misc directory
       shell: pwsh
-      run: cd Misc
-
-    - name: Invoke Enum
-      shell: pwsh
-      run: .\Invoke-EnumerateAzureSubDomains.ps1 -Base ${{ github.event.inputs.name }} -Verbose
+      working-directory: ./MicroBurst/Misc
+      run: |
+        .\Invoke-EnumerateAzureSubDomains.ps1 -Base ${{ github.event.inputs.name }} -Verbose
