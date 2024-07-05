@@ -19,15 +19,39 @@ jobs:
     - name: Git Clone MicroBurst
       run: git clone https://github.com/NetSPI/MicroBurst.git MicroBurst
 
+    - name: List Files in MicroBurst
+      shell: pwsh
+      run: Get-ChildItem -Recurse MicroBurst
+
     - name: List Files in MicroBurst Module Directory
       shell: pwsh
       run: Get-ChildItem -Recurse ./MicroBurst
 
+    - name: Install Az Module
+      shell: pwsh
+      run: |
+        Install-Module -Name Az -Force -AllowClobber
+        Import-Module Az
+
+    - name: Install AzureAD Module
+      shell: pwsh
+      run: |
+        Install-Module -Name AzureAD -Force -AllowClobber
+        Import-Module AzureAD
+
+    - name: Install MSOnline Module
+      shell: pwsh
+      run: |
+        Install-Module -Name MSOnline -Force -AllowClobber
+        Import-Module MSOnline
+
     - name: Import MicroBurst Module with Error Handling
       shell: pwsh
       run: |
+        $ErrorActionPreference = 'Stop'
         try {
-          Import-Module ./MicroBurst/MicroBurst.psm1 -ErrorAction Stop
+          Import-Module ./MicroBurst/MicroBurst.psm1
+          Write-Output "Module imported successfully."
         } catch {
           Write-Error "Failed to import module. Error: $_"
           exit 1
