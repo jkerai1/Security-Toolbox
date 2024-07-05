@@ -15,7 +15,7 @@ The concept behind this project is to leverage Github Workflows for Security rel
 | DNSTwist | Find lookalike domains that adversaries can use to attack you. Can detect typosquatters, phishing attacks, fraud, and brand impersonation|https://github.com/elceef/dnstwist
 | GetTopWordsFromWebsite | Get Top Words from website | https://github.com/jkerai1/GeneratePasswordListFromWebsite
 | Holehe | check if the mail is used on different sites like twitter, instagram | https://github.com/megadose/holehe    
-| ignorant | check if a phone number is used on different sites like snapchat, instagram| https://github.com/megadose/ignorant
+| Ignorant | check if a phone number is used on different sites like snapchat, instagram| https://github.com/megadose/ignorant
 | Microburst Azure Domain Enumeration | EnumerateAzureSubDomains given a base tenant name | https://github.com/NetSPI/MicroBurst/tree/master
 | PyWhat | Classify Strings | https://github.com/bee-san/pyWhat
 | RustScan | Port Scanner in Rust | https://github.com/RustScan/RustScan
