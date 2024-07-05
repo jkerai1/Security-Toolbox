@@ -20,5 +20,10 @@ jobs:
     steps:
     # Run against IPInfo API
     - uses: actions/checkout@v4
-    - name: Run the Curl Command against IPInfo API
-      run: curl http://ip-api.com/json/${{ github.event.inputs.IP }}?fields=message,country,countryCode,regionName,isp,org,as,proxy,hosting,query
+    - name: Run the Command against IPInfo API
+      shell: pwsh
+      run: (Invoke-WebRequest ipinfo.io/${{ github.event.inputs.IP }}).content 
+
+    - name: Run Curl
+      run: curl http://ip-api.com/json/${{ github.event.inputs.IP }}?fields=message,country,countryCode,regionName,isp,org,as,proxy,hosting,query | jq
+      
