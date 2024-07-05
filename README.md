@@ -1,3 +1,8 @@
+[![GitHub stars](https://img.shields.io/github/stars/jkerai1/Security-Toolbox?style=flat-square)](https://github.com/jkerai1/Security-Toolbox/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/jkerai1/Security-Toolbox?style=flat-square)](https://github.com/jkerai1/Security-Toolbox/network)
+[![GitHub issues](https://img.shields.io/github/issues/jkerai1/Security-Toolbox?style=flat-square)](https://github.com/jkerai1/Security-Toolbox/issues)
+[![GitHub pulls](https://img.shields.io/github/issues-pr/jkerai1/Security-Toolbox?style=flat-square)](https://github.com/jkerai1/Security-Toolbox/pulls)
+
 # Security-Toolbox
 
 The concept behind this project is to leverage Github Workflows for Security related Tasks
