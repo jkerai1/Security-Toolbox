@@ -59,4 +59,4 @@ jobs:
       shell: pwsh
       working-directory: ./MicroBurst/Misc
       run: |
-        .\Invoke-EnumerateAzureSubDomains.ps1 -Base ${{ github.event.inputs.name }} -Verbose
+        Invoke-EnumerateAzureSubDomains -Base ${{ github.event.inputs.name }} -Verbose
