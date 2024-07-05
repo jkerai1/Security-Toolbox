@@ -28,12 +28,8 @@ jobs:
     - name: Git Clone
       run: git clone https://github.com/Tuhinshubhra/CMSeeK
 
-    - name: Change dir
-      run: cd CMSeeK
-    - name: Change dir
-      run: ls -a 
     - name: Run cmseek
-      run: python CMSeeK/cmseek.py -u ${{ github.event.inputs.domain }} --light-scan
+      run: python CMSeeK/cmseek.py -u ${{ github.event.inputs.domain }} --light-scan --follow-redirect --batch
 
       
       
