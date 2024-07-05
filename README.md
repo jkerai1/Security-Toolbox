@@ -20,7 +20,9 @@ The concept behind this project is to leverage Github Workflows for Security rel
 | Microburst Azure Domain Enumeration | EnumerateAzureSubDomains given a string such as company name | https://github.com/NetSPI/MicroBurst/tree/master
 | Nikto | web server scanner | https://github.com/sullo/nikto
 | PyWhat | Classify Strings | https://github.com/bee-san/pyWhat
+| Ransomwatch | Grab data from ransomwatch | https://github.com/joshhighet/ransomwatch
 | RustScan | Port Scanner in Rust | https://github.com/RustScan/RustScan
+| SQLMap | Automatic SQL Inject Scanner | https://github.com/sqlmapproject/sqlmap
 | WPSSCan | WordPress Security Scanner | https://github.com/wpscanteam/wpscan
 
 # Experimental Workflows
