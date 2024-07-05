@@ -17,7 +17,7 @@ The concept behind this project is to leverage Github Workflows for Security rel
 | Holehe | check if the mail is used on different sites like twitter, instagram | https://github.com/megadose/holehe    
 | Ignorant | check if a phone number is used on different sites like snapchat, instagram| https://github.com/megadose/ignorant
 | IPInfo | Get Information on IP address | https://ipinfo.io/
-| Microburst Azure Domain Enumeration | EnumerateAzureSubDomains given a base tenant name | https://github.com/NetSPI/MicroBurst/tree/master
+| Microburst Azure Domain Enumeration | EnumerateAzureSubDomains given a string such as company name | https://github.com/NetSPI/MicroBurst/tree/master
 | PyWhat | Classify Strings | https://github.com/bee-san/pyWhat
 | RustScan | Port Scanner in Rust | https://github.com/RustScan/RustScan
 | WPSSCan | WordPress Security Scanner | https://github.com/wpscanteam/wpscan
