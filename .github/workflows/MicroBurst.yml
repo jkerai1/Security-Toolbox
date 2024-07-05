@@ -19,13 +19,19 @@ jobs:
     - name: Git Clone MicroBurst
       run: git clone https://github.com/NetSPI/MicroBurst.git MicroBurst
 
-    - name: List Files in MicroBurst
+    - name: List Files in MicroBurst Module Directory
       shell: pwsh
-      run: Get-ChildItem -Recurse MicroBurst
+      run: Get-ChildItem -Recurse ./MicroBurst
 
-    - name: Import MicroBurst Module
+    - name: Import MicroBurst Module with Error Handling
       shell: pwsh
-      run: Import-Module ./MicroBurst/MicroBurst.psm1
+      run: |
+        try {
+          Import-Module ./MicroBurst/MicroBurst.psm1 -ErrorAction Stop
+        } catch {
+          Write-Error "Failed to import module. Error: $_"
+          exit 1
+        }
 
     - name: Invoke Enum
       shell: pwsh
