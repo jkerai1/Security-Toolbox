@@ -33,7 +33,7 @@ jobs:
     - name: Change dir
       run: ls -a 
     - name: Run cmseek
-      run: python CMSeeK\cmseek.py -u ${{ github.event.inputs.domain }}
+      run: python CMSeeK/cmseek.py -u ${{ github.event.inputs.domain }}
 
       
       
