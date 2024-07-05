@@ -18,12 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Run against IPInfo API
-    - uses: actions/checkout@v4
+    # Run against IPInfo
     - name: Run the Command against IPInfo API
       shell: pwsh
       run: (Invoke-WebRequest ipinfo.io/${{ github.event.inputs.IP }}).content 
 
-    - name: Run Curl
+    - name: Run Curl against IP API
       run: curl http://ip-api.com/json/${{ github.event.inputs.IP }}?fields=message,country,countryCode,regionName,isp,org,as,proxy,hosting,query | jq
       
