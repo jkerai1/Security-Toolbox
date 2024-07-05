@@ -23,19 +23,23 @@ jobs:
     - name: Set Execution Policy to Bypass
       shell: pwsh
       run: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
-
-    - name: Install Az Modules
+      
+    - name: Set Language Mode
       shell: pwsh
-      working-directory: ./MicroBurst/Misc
-      run: Install-Module Az -Force -AllowClobber
+      run: $ExecutionContext.SessionState.LanguageMode = "FullLanguage"
 
-    - name: Install AzureAd Modules
-      shell: pwsh
-      run: Install-Module AzureAd -Force -AllowClobber
+    #- name: Install Az Modules
+     # shell: pwsh
+      #working-directory: ./MicroBurst/Misc
+    #  run: Install-Module Az -Force -AllowClobber
 
-    - name: Install MSOnline Modules
-      shell: pwsh
-      run: Install-Module MSonline -Force -AllowClobber
+    #- name: Install AzureAd Modules
+     # shell: pwsh
+      #run: Install-Module AzureAd -Force -AllowClobber
+
+    #- name: Install MSOnline Modules
+     # shell: pwsh
+      #run: Install-Module MSonline -Force -AllowClobber
 
       
     - name: Change Directory to MicroBurst directory
