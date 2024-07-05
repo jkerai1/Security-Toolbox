@@ -11,6 +11,7 @@ The concept behind this project is to leverage Github Workflows for Security rel
 
 | Workflow| Description | Source
 | --- | --- | --- |
+| CMSeeK  | CMS Detection suite - Scan WordPress, Joomla, Drupal and over 180 other CMSs |https://github.com/Tuhinshubhra/CMSeeK
 | DNSTwist | Find lookalike domains that adversaries can use to attack you. Can detect typosquatters, phishing attacks, fraud, and brand impersonation|https://github.com/elceef/dnstwist
 | GetTopWordsFromWebsite | Get Top Words from website | https://github.com/jkerai1/GeneratePasswordListFromWebsite
 | Holehe |llows you to check if the mail is used on different sites like twitter, instagram | https://github.com/megadose/holehe    
