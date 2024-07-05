@@ -27,5 +27,5 @@ jobs:
 
     - name: Invoke Enum
       shell: pwsh
-      run: .\MicroBurst\Misc\Invoke-EnumerateAzureSubDomains.ps1 -Base ${{ github.event.inputs.name }} -Verbose
+      run: .\MicroBurst\Misc\Invoke-EnumerateAzureSubDomains -Base ${{ github.event.inputs.name }} -Verbose
       
