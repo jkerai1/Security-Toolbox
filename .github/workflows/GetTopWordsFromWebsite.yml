@@ -1,4 +1,4 @@
-name: TopWordsFromWebsite
+name: GetTopWordsFromWebsite
 
 on:
   workflow_dispatch:
@@ -17,7 +17,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  TopWordsFromWebsite:
+  GetTopWordsFromWebsite:
     runs-on: ubuntu-latest
     steps:
     # Set up Python environment
@@ -29,5 +29,5 @@ jobs:
         cache: 'pip' 
     - run: pip install -r requirements.txt
         
-    - name: Run Scrapper
+    - name: GetTopWordsFromWebsite
       run: python GetTopWordsFromWebsite.py --domaininput ${{ github.event.inputs.Domain }} --NoOfWords ${{ github.event.inputs.number }}
