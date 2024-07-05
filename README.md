@@ -4,17 +4,20 @@ The concept behind this project is to leverage Github Workflows for Security rel
 
 # Current Workflows Available  
 
-1. DNSTwist - _Find lookalike domains that adversaries can use to attack you. Can detect typosquatters, phishing attacks, fraud, and brand impersonation_  
-2. Holehe - _look up email usage using holehe by megadose_    
-3. ignorant - _allows you to check if a phone number is used on different sites like snapchat, instagram_
-4. PyWhat - _Classify Strings_
-5. GetTopWordsFromWebsite - _Get Top Words from website_  
-6. WPSSCan - _WordPress Security Scanner_
-7. RustScan - _Port Scanner in Rust_
+| Workflow| Description | Source
+| --- | --- | --- |
+| DNSTwist | Find lookalike domains that adversaries can use to attack you. Can detect typosquatters, phishing attacks, fraud, and brand impersonation|https://github.com/elceef/dnstwist
+| GetTopWordsFromWebsite | Get Top Words from website | https://github.com/jkerai1/GeneratePasswordListFromWebsite
+| Holehe |llows you to check if the mail is used on different sites like twitter, instagram | https://github.com/megadose/holehe    
+| ignorant | allows you to check if a phone number is used on different sites like snapchat, instagram| https://github.com/megadose/ignorant
+| PyWhat | Classify Strings | https://github.com/bee-san/pyWhat
+| RustScan | Port Scanner in Rust | https://github.com/RustScan/RustScan
+| WPSSCan | WordPress Security Scanner | https://github.com/wpscanteam/wpscan
 
 # Experimental Workflows
-
-1. Ciphey - _Input encrypted text, get the decrypted text back_
+| Workflow| Description | Source
+| --- | --- | --- |
+| Ciphey | Input encrypted text, get the decrypted text back | https://github.com/Ciphey/Ciphey
 
 
 # Instructions  
