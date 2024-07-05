@@ -14,18 +14,23 @@ on:
 jobs:
   MicroBurst:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Set up environment
-    - name: Git Clone
-      run: git clone https://github.com/NetSPI/MicroBurst
-      
-    - name: Import Module
-      shell: pwsh
-      run: Import-Module .\MicroBurst\MicroBurst.psm1
+    # Checkout the repository to the runner
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
+    # Clone the MicroBurst repository
+    - name: Git Clone MicroBurst
+      run: git clone https://github.com/NetSPI/MicroBurst.git MicroBurst
+
+    # Import the MicroBurst module
+    - name: Import MicroBurst Module
+      shell: pwsh
+      run: Import-Module ./MicroBurst/MicroBurst.psm1
+
+    # Invoke the enumeration script
     - name: Invoke Enum
       shell: pwsh
-      run: .\MicroBurst\Misc\Invoke-EnumerateAzureSubDomains.ps1 -Base ${{ github.event.inputs.name }} -Verbose
-      
+      run: ./MicroBurst/Misc/Invoke-EnumerateAzureSubDomains.ps1 -Base ${{ github.event.inputs.name }} -Verbose
