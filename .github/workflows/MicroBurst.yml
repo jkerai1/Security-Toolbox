@@ -20,13 +20,13 @@ jobs:
     - name: Git Clone MicroBurst
       run: git clone https://github.com/NetSPI/MicroBurst.git MicroBurst
 
-    - name: Set Execution Policy to Bypass
-      shell: pwsh
-      run: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+    #- name: Set Execution Policy to Bypass
+      #shell: pwsh
+      #run: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
       
-    - name: Set Language Mode
-      shell: pwsh
-      run: $ExecutionContext.SessionState.LanguageMode = "FullLanguage"
+    #- name: Set Language Mode
+     # shell: pwsh
+      #run: $ExecutionContext.SessionState.LanguageMode = "FullLanguage"
 
     #- name: Install Az Modules
      # shell: pwsh
