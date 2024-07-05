@@ -1,0 +1,28 @@
+name: RustScan
+# Controls when the action will run. Workflow runs when manually triggered using the UI or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      ipaddr:
+        description: 'IP or Domain To Scan'
+        default: 'example.com'
+        required: true
+        type: string
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  RustScan:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Set up environment
+    - uses: actions/checkout@v4
+    - name: Docker Pull
+      run: docker pull rustscan/rustscan:2.1.1
+
+      #RustScan Documentation recommends 2.1.1 as the latest stable release
+    - name: Docker Run
+      run: docker run --name rustscan rustscan/rustscan:2.1.1 -a ${{ github.event.inputs.ipaddr }}
+      
