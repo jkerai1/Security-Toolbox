@@ -1,0 +1,33 @@
+name: Ransomwatch
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI or API.
+on:
+  workflow_dispatch:
+    # Inputs that the workflow will accept.
+    inputs:
+      Group:
+        description: 'Enter the name of group'
+        default: 'lockbit'
+        required: true
+        type: string
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  Ransomwatch:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Print last top 20 claims by group 
+      run: curl -sL ransomwhat.telemetry.ltd/groups | jq -r '.[] | select(.name == "${{github.events.inputs.group}}")' | tail -n 20
+    
+    - name: Print last top 20 claims by group 
+      run: curl -sL ransomwhat.telemetry.ltd/posts | jq -r '.[] | select(.group_name == "${{github.events.inputs.group}}") | .post_title'
+      
+    - name: Print Last 20 Claims of all groups
+      run: curl -sL ransomwhat.telemetry.ltd/posts | jq -r '.[] | [.group_name, .post_title] | @tsv'  sed 's/ /_/g'  | column -t | tail -n 20
+
+    - name: Print all online URLs
+      run: curl -sL ransomwhat.telemetry.ltd/groups | jq -r '.[] | .locations[] | select(.available == true) | .slug'
+
+      
