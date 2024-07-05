@@ -25,10 +25,7 @@ jobs:
       shell: pwsh
       run: Import-Module .\MicroBurst\MicroBurst.psm1
 
-    - name: Install Module
-      shell: pwsh
-      run: Install-Module .\MicroBurst\Az\MicroBurst-Az.psm1
-
     - name: Invoke Enum
+      shell: pwsh
       run: Invoke-EnumerateAzureSubDomains -Base ${{ github.event.inputs.name }}
       
