@@ -27,15 +27,15 @@ jobs:
     - name: Install Az Modules
       shell: pwsh
       working-directory: ./MicroBurst/Misc
-      run: Install-Module Az -Force
+      run: Install-Module Az -Force -AllowClobber
 
     - name: Install AzureAd Modules
       shell: pwsh
-      run: Install-Module AzureAd -Force
+      run: Install-Module AzureAd -Force -AllowClobber
 
     - name: Install MSOnline Modules
       shell: pwsh
-      run: Install-Module MSonline -Force
+      run: Install-Module MSonline -Force -AllowClobber
 
       
     - name: Change Directory to MicroBurst directory
