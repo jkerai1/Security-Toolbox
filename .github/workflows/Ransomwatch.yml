@@ -19,10 +19,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - name: Print last top 20 claims by group 
-      run: curl -sL ransomwhat.telemetry.ltd/groups | jq -r '.[] | select(.name == "${{github.events.inputs.Group}}")' | tail -n 20
+      run: curl -sL ransomwhat.telemetry.ltd/groups | jq -r '.[] | select(.name == ${{github.events.inputs.Group}})' | tail -n 20
     
     - name: Print last top 20 claims by group 
-      run: curl -sL ransomwhat.telemetry.ltd/posts | jq -r '.[] | select(.group_name == "${{github.events.inputs.Group}}") | .post_title'
+      run: curl -sL ransomwhat.telemetry.ltd/posts | jq -r '.[] | select(.group_name == ${{github.events.inputs.Group}}) | .post_title'
       
     - name: Print Last 20 Claims of all groups
       run: curl -sL ransomwhat.telemetry.ltd/posts | jq -r '.[] | [.group_name, .post_title] | @tsv'  sed 's/ /_/g'  | column -t | tail -n 20
