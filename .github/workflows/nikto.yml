@@ -1,0 +1,30 @@
+name: nikto
+# Controls when the action will run. Workflow runs when manually triggered using the UI or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      domain:
+        description: 'Domain To Scan'
+        default: 'https://example.com'
+        required: true
+        type: string
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  nikto:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+    - name: Git Clone
+      run: git clone https://github.com/sullo/nikto.git
+
+    - name: Docker build
+      working-directory: ./nikto
+      run: docker build -t sullo/nikto .
+      
+    - name: Docker Run
+      run: docker run --rm sullo/nikto -h ${{ github.event.inputs.domain }}
+      

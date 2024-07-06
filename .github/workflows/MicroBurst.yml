@@ -13,16 +13,35 @@ jobs:
   MicroBurst:
     runs-on: windows-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    #No need to checkout for this one
+    #- name: Checkout repository
+    # uses: actions/checkout@v2
 
     - name: Git Clone MicroBurst
       run: git clone https://github.com/NetSPI/MicroBurst.git MicroBurst
 
-    - name: Set Execution Policy to Bypass
-      shell: pwsh
-      run: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+    #- name: Set Execution Policy to Bypass
+      #shell: pwsh
+      #run: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+      
+    #- name: Set Language Mode
+     # shell: pwsh
+      #run: $ExecutionContext.SessionState.LanguageMode = "FullLanguage"
 
+    #- name: Install Az Modules
+     # shell: pwsh
+      #working-directory: ./MicroBurst/Misc
+    #  run: Install-Module Az -Force -AllowClobber
+
+    #- name: Install AzureAd Modules
+     # shell: pwsh
+      #run: Install-Module AzureAd -Force -AllowClobber
+
+    #- name: Install MSOnline Modules
+     # shell: pwsh
+      #run: Install-Module MSonline -Force -AllowClobber
+
+      
     - name: Change Directory to MicroBurst directory
       shell: pwsh
       working-directory: ./MicroBurst
@@ -40,4 +59,5 @@ jobs:
       shell: pwsh
       working-directory: ./MicroBurst/Misc
       run: |
-        .\Invoke-EnumerateAzureSubDomains.ps1 -Base ${{ github.event.inputs.name }} -Verbose
+        Import-Module ./Invoke-EnumerateAzureSubDomains.ps1
+        Invoke-EnumerateAzureSubDomains -Base ${{ github.event.inputs.name }} -Verbose
