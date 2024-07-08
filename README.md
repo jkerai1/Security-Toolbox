@@ -5,7 +5,13 @@
 
 # Security-Toolbox
 
-The concept behind this project is to leverage Github Workflows for Security related Tasks
+The concept behind this project is to leverage Github Workflows for Security related Tasks.
+
+# Guidelines  
+
+**DO NOT** leverage this repo for malicious intent. Only perform IP/domain scans on assets you have permission to.  
+
+**DO NOT** excessively use github runners for bulk tasks.  
 
 # Current Workflows Available  
 
