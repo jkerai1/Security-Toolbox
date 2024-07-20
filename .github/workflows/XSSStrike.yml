@@ -33,8 +33,8 @@ jobs:
       
     # Run with the provided input
     - name: git clone
-      run: git clone https://github.com/s0md3v/XSStrike.git
+      run: git clone https://github.com/s0md3v/XSStrike.git XSStrike
 
     - name: Run XSStrike
-      working-directory: ./sqlmap-dev
+      working-directory: ./XSStrike
       run: python xsstrike.py -u "${{ github.event.inputs.domain }}"
