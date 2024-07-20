@@ -17,7 +17,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  XSSStrike:
+  XSStrike:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -35,6 +35,6 @@ jobs:
     - name: git clone
       run: git clone https://github.com/s0md3v/XSStrike.git
 
-    - name: Run SQLMap
+    - name: Run XSStrike
       working-directory: ./sqlmap-dev
       run: python xsstrike.py -u "${{ github.event.inputs.domain }}"
