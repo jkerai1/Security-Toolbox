@@ -17,10 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - uses: actions/checkout@v4
     - name: Git Clone
-      run: git clone https://github.com/CERT-Polska/mailgoose
+      run: git clone https://github.com/CERT-Polska/mailgoose mailgoose
 
     - name: copy env
+      working-directory: ./mailgoose
       run: |
         cp env.example .env 
         docker compose up --build
