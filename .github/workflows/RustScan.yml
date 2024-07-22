@@ -24,5 +24,5 @@ jobs:
 
       #RustScan Documentation recommends 2.1.1 as the latest stable release
     - name: Docker Run
-      run: docker run --name rustscan rustscan/rustscan:2.1.1 -a ${{ github.event.inputs.ipaddr }}
+      run: docker run --name rustscan rustscan/rustscan:2.1.1 -a ${{ github.event.inputs.ipaddr }} --scan-order "Random"
       
