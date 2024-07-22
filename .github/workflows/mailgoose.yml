@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
-      ipaddr:
+      domain:
         description: 'Domain'
         default: 'example.com'
         required: true
@@ -25,6 +25,6 @@ jobs:
     - name: copy env
     - working-directory: ./Mailgoose
     - run: |
-        cp env.example .env  # After doing that, customize the settings in .env if needed
+        cp env.example .env 
         docker compose up --build
         curl -X POST http://127.0.0.1:8000/api/v1/check-domain?domain=${{ github.event.inputs.domain }}
