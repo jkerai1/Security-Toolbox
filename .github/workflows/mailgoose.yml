@@ -21,8 +21,8 @@ jobs:
       run: git clone https://github.com/CERT-Polska/mailgoose
 
     - name: copy env
-    - working-directory: ./Mailgoose
-    - run: |
+      working-directory: ./Mailgoose
+      run: |
         cp env.example .env 
         docker compose up --build
         curl -X POST http://127.0.0.1:8000/api/v1/check-domain?domain=${{ github.event.inputs.domain }}
