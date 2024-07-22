@@ -28,5 +28,3 @@ jobs:
         cp env.example .env  # After doing that, customize the settings in .env if needed
         docker compose up --build
         curl -X POST http://127.0.0.1:8000/api/v1/check-domain?domain=${{ github.event.inputs.domain }}
-    
-      
