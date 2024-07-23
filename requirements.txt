@@ -4,3 +4,5 @@ Dnstwist
 pywhat
 beautifulsoup4
 requests
+tld
+fuzzywuzzy

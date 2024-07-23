@@ -24,5 +24,5 @@ jobs:
       run: docker pull wpscanteam/wpscan
       
     - name: Docker Run
-      run: docker run wpscanteam/wpscan --url ${{ github.event.inputs.domain }}
+      run: docker run wpscanteam/wpscan --url ${{ github.event.inputs.domain }} --ignore-main-redirect
       
