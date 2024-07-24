@@ -9,7 +9,7 @@ on:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'URL to Heliostrike'
         # Default value
-        default: 'google.com'
+        default: 'http://testphp.vulnweb.com'
         # Input has to be provided for the workflow to run
         required: true
         # The data type of the input
