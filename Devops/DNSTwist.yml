@@ -1,0 +1,38 @@
+# Azure DevOps Pipeline for DNSTwisting for TypoSquats
+
+trigger: none
+
+# Manually triggered pipeline using the UI or API
+pr: none
+
+parameters:
+  - name: domain
+    displayName: 'Domain to check with DNS Twist'
+    type: string
+    default: 'google.com'
+
+jobs:
+- job: DNSTwist
+  displayName: 'Run DNSTwist for TypoSquats'
+  pool:
+    vmImage: 'ubuntu-latest'
+
+  steps:
+  - checkout: self
+
+  # Set up Python environment
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.x'
+      addToPath: true
+
+  # Install dependencies
+  - script: |
+      python -m pip install --upgrade pip
+      pip install -r Dnstwist
+    displayName: 'Install Dependencies'
+
+  # Run DNSTwist with the provided domain input
+  - script: |
+      dnstwist $(domain)
+    displayName: 'Run DNSTwist'
