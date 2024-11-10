@@ -25,5 +25,5 @@ jobs:
     - uses: actions/checkout@v4
     - name: Docker Run
       working-directory: ./
-      run: docker run --rm ghcr.io/oj/gobuster dir -u ${{ github.event.inputs.domain }} -w GoBuster-DirWordList.txt
+      run: docker run --rm -v ${{ github.workspace }}/GoBuster-DirWordList.txt:/GoBuster-DirWordList.txt ghcr.io/oj/gobuster dir -u ${{ github.event.inputs.domain }} -w /GoBuster-DirWordList.txt
       
