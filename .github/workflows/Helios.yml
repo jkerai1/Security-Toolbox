@@ -30,7 +30,11 @@ jobs:
         python-version: '3.x'
         cache: 'pip' # caching pip dependencies
     - run: pip install -r requirements.txt
-      
+
+
+    - name: Verify Installation
+      run: pip list
+        
     # Run with the provided input
     - name: git clone
       run: git clone https://github.com/Stuub/Helios HeliosStrike
