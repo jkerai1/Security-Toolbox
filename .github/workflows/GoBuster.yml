@@ -24,5 +24,6 @@ jobs:
       #GoBuster Dir
     - uses: actions/checkout@v4
     - name: Docker Run
+      working-directory: ./
       run: docker run --rm ghcr.io/oj/gobuster dir -u ${{ github.event.inputs.domain }} -w GoBuster-DirWordList.txt
       
