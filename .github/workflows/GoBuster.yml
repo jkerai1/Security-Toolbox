@@ -18,11 +18,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Set up environment
-    - uses: actions/checkout@v4
     - name: Docker Pull
       run: docker pull ghcr.io/oj/gobuster:latest
 
       #GoBuster Dir
+    - uses: actions/checkout@v4
     - name: Docker Run
       run: docker run --rm ghcr.io/oj/gobuster dir -u ${{ github.event.inputs.domain }} -w GoBuster-DirWordList.txt
       
