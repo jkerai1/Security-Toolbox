@@ -5,7 +5,7 @@
 
 # Security-Toolbox
 
-The concept behind this project is to leverage Github Workflows for Security related Tasks.
+The concept behind this project is to leverage Github Workflows for Security related Tasks. Security Teams may not always have access to a terminal (e.g. A nightime callout) to validate a finding.  
 
 # Guidelines  
 
