@@ -2,7 +2,10 @@ holehe
 Ignorant
 Dnstwist
 pywhat
-beautifulsoup4
-requests
+beautifulsoup4==4.12.3
+requests==2.32.3
 tld
 fuzzywuzzy
+selenium==4.22.0
+webdriver-manager==4.0.1
+aiohttp
