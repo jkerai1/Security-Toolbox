@@ -9,3 +9,6 @@ fuzzywuzzy
 selenium==4.22.0
 webdriver-manager==4.0.1
 aiohttp
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
+anyio>=4.4.0 # not directly required, pinned by Snyk to avoid a vulnerability
+urllib3>=2.2.2 # not directly required, pinned by Snyk to avoid a vulnerability
