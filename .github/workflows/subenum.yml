@@ -1,0 +1,135 @@
+name: Subdomain Enumeration
+on:
+  workflow_dispatch:
+    inputs:
+      domain:
+        description: 'Target domain'
+        required: true
+      aggressive:
+        description: 'Run aggressive enumeration'
+        type: boolean
+        default: false
+      resolvers:
+        description: 'Custom resolvers list URL'
+        required: false
+        default: 'https://raw.githubusercontent.com/trickest/resolvers/main/resolvers.txt'
+  workflow_call:
+    inputs:
+      domain:
+        description: 'Target domain'
+        required: true
+        type: string
+      aggressive:
+        description: 'Run aggressive enumeration'
+        type: boolean
+        default: false
+      resolvers:
+        description: 'Custom resolvers list URL'
+        type: string
+        required: false
+        default: 'https://raw.githubusercontent.com/trickest/resolvers/main/resolvers.txt'
+
+jobs:
+  subdomain-enum:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Install Tools
+        run: |
+          # Install core tools
+          go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+          go install -v github.com/projectdiscovery/alterx@latest
+          go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
+          go install -v github.com/projectdiscovery/shuffledns/cmd/shuffledns@latest
+          go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+          
+          # Create directories
+          mkdir -p {tools,wordlists,results}
+
+      - name: Prepare Resources
+        run: |
+          # Download resolvers
+          wget ${{ github.event.inputs.resolvers }} -O wordlists/resolvers.txt
+          
+          # Download wordlists if aggressive mode
+          if [ "${{ github.event.inputs.aggressive }}" == "true" ]; then
+            wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/DNS/dns-Jhaddix.txt -O wordlists/dns-wordlist.txt
+            wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/DNS/deepmagic.com-prefixes-top50000.txt -O wordlists/deepmagic.txt
+          fi
+
+      - name: Initial Enumeration
+        run: |
+          # Run Subfinder with all sources
+          subfinder -d ${{ github.event.inputs.domain }} \
+            -all -silent \
+            -o results/subfinder.txt
+          
+          # Alterx for permutations
+          cat results/subfinder.txt | alterx -silent > results/alterx.txt
+
+      - name: DNS Resolution & Validation
+        run: |
+          # Combine initial results
+          cat results/*.txt | sort -u > results/combined.txt
+          
+          # DNS resolution with retry
+          cat results/combined.txt | \
+            dnsx -silent -retry 3 -resp \
+            -r wordlists/resolvers.txt \
+            -o results/resolved.txt
+
+      - name: Aggressive Enumeration
+        if: ${{ github.event.inputs.aggressive == 'true' }}
+        run: |
+          # Brute force with shuffledns
+          shuffledns -d ${{ github.event.inputs.domain }} \
+            -w wordlists/dns-wordlist.txt \
+            -r wordlists/resolvers.txt \
+            -silent -o results/brute.txt
+          
+          # Deep bruteforce with alternative wordlist
+          shuffledns -d ${{ github.event.inputs.domain }} \
+            -w wordlists/deepmagic.txt \
+            -r wordlists/resolvers.txt \
+            -silent -o results/deep-brute.txt
+
+      - name: HTTP Probe
+        run: |
+          # Combine all results
+          cat results/*.txt | sort -u > results/all-domains.txt
+          
+          # Probe for HTTP/HTTPS services
+          cat results/all-domains.txt | \
+            httpx -silent -title -tech-detect -status-code \
+            -follow-redirects -no-color \
+            -o results/http-probe.txt
+
+      - name: Generate Report
+        run: |
+          echo "# Subdomain Enumeration Report" > results/report.md
+          echo "## Statistics" >> results/report.md
+          echo "- Total subdomains found: $(wc -l < results/all-domains.txt)" >> results/report.md
+          echo "- Live HTTP services: $(wc -l < results/http-probe.txt)" >> results/report.md
+          
+          echo "## Live Subdomains" >> results/report.md
+          cat results/http-probe.txt >> results/report.md
+
+      - name: Upload Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: subdomain-results
+          path: |
+            results/all-domains.txt
+            results/http-probe.txt
+            results/report.md
+          retention-days: 1
+
+      - name: Cleanup
+        if: always()
+        run: |
+          rm -rf wordlists/
+          rm -rf results/*.txt
