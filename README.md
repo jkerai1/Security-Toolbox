@@ -65,3 +65,9 @@ The concept behind this project is to leverage Github Workflows for Security rel
 9. Find the section where the job ran, the output of the command will be there. At current there is NO github commit from the action  
 
 ![image](https://github.com/jkerai1/Security-Toolbox/assets/55988027/a1497849-5f0d-4488-bb32-0c7086b9c310)
+
+# Further Possible Additions to the ToolBox
+
+Hundreds of Offensive and Useful Docker Images for Network Intrusion - https://houdini.secsi.io/  
+
+CloudSecTools is a curated collection of open-source cloud security tools, helping security professionals, researchers, and engineers find the best resources for securing cloud environments - https://cloudsectools.com/
