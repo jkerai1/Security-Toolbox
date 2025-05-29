@@ -21,6 +21,7 @@ The concept behind this project is to leverage Github Workflows for Security rel
 | CMSeeK  | CMS Detection suite - Scan WordPress, Joomla, Drupal and over 180 other CMSs |https://github.com/Tuhinshubhra/CMSeeK
 | DNSTwist | Find lookalike domains that adversaries can use to attack you. Can detect typosquatters, phishing attacks, fraud, and brand impersonation|https://github.com/elceef/dnstwist
 | GetTopWordsFromWebsite | Get Top Words from website | https://github.com/jkerai1/GeneratePasswordListFromWebsite
+| Get Entra Tenant ID from Azure Subscription ID| Get Azure/Entra Tenant ID for a given Azure Subscription ID | https://www.lieben.nu/liebensraum/2020/08/get-tenant-id-using-azure-subscription-id/
 | GoBuster | BruteForce Gobuster is a tool used to brute-force URIs (directories and files) in web sites. | https://github.com/OJ/gobuster
 | Holehe | check if the mail is used on different sites like twitter, instagram | https://github.com/megadose/holehe    
 | Ignorant | check if a phone number is used on different sites like snapchat, instagram| https://github.com/megadose/ignorant
