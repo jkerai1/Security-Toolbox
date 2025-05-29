@@ -1,0 +1,30 @@
+name: MicroBurst
+
+on:
+  workflow_dispatch:
+    inputs:
+      subId:
+        description: 'subscription id to check'
+        default: '695ae9cc-4235-46fe-bb35-4a82e1fc9c64'
+        required: true
+        type: string
+
+jobs:
+  MicroBurst:
+    runs-on: windows-latest
+    steps:
+    
+
+    - name: Run Function
+      shell: pwsh
+      run: |
+          $subId = "${{ github.event.inputs.subId }}"
+          $response = try {
+            (Invoke-WebRequest -UseBasicParsing -Uri "https://management.azure.com/subscriptions/$($subId)?api-version=2015-01-01" -ErrorAction Stop).BaseResponse
+          } catch {
+            $_.Exception.Response
+          }
+
+          $stringHeader = $response.Headers.ToString()
+          $output = $stringHeader.Substring($stringHeader.IndexOf("login.windows.net") + 18, 36)
+          Write-Host $output
