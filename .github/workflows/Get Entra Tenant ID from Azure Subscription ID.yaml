@@ -1,4 +1,4 @@
-name: Get Entra Tenant ID from Azure ASubscription ID
+name: Get Entra Tenant ID from Azure Subscription ID
 
 on:
   workflow_dispatch:
