@@ -1,4 +1,4 @@
-name: MicroBurst
+name: Get Entra Tenant ID from Azure ASubscription ID
 
 on:
   workflow_dispatch:
