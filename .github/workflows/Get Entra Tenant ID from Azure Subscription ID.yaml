@@ -27,4 +27,4 @@ jobs:
 
           $stringHeader = $response.Headers.ToString()
           $output = $stringHeader.Substring($stringHeader.IndexOf("login.windows.net") + 18, 36)
-          Write-Host $output
+          Write-Host("The Tenant ID for $subId is $output")
