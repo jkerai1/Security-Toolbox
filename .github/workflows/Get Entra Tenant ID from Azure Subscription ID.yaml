@@ -10,7 +10,7 @@ on:
         type: string
 
 jobs:
-  MicroBurst:
+  Get Entra Tenant ID from Azure Subscription ID:
     runs-on: windows-latest
     steps:
     
