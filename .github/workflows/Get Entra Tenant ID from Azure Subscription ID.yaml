@@ -10,7 +10,7 @@ on:
         type: string
 
 jobs:
-  Get Entra Tenant ID from Azure Subscription ID:
+  GetEntraTenantID:
     runs-on: windows-latest
     steps:
     
